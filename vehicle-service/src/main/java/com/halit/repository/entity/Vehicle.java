@@ -33,7 +33,7 @@ public class Vehicle {
     private String year;
     private String region;
     private String fleet;
-    private String group;
+    private String grup;
 
 
 }
