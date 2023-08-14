@@ -1,0 +1,18 @@
+server:
+  port: 8091
+
+spring:
+  security:
+    user:
+      name: halit
+      password: 123
+  datasource:
+    username: 'postgres'
+    password: 'root'
+    driver-class-name: org.postgresql.Driver
+    url: 'jdbc:postgresql://localhost:5432/mobilizAuth'
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
