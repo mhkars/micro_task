@@ -30,9 +30,9 @@ public class VehicleController {
     }
     @GetMapping(GETALLLIST)
 
-    public ResponseEntity<List<Vehicle>> findAllList() {
+    public ResponseEntity<List<Vehicle>> findAllList(Long authId) {
 
-        return ResponseEntity.ok(vehicleService.findAll());
+        return ResponseEntity.ok(vehicleService.findAllByAuthorizedId(authId));
     }
     @GetMapping(GETALLGROUP)
 
@@ -46,26 +46,26 @@ public class VehicleController {
         return ResponseEntity.ok(vehicleService.updateVehicle(dto));
     }
     @PutMapping(AUTHGROUP)
-    public ResponseEntity<Boolean> authGroup(@RequestBody @Valid Long authId, String groupName) {
+    public ResponseEntity<Boolean> authGroup(@RequestBody @Valid Long authId, Long groupId) {
+        return ResponseEntity.ok(vehicleService.authGroup(authId,groupId));
+    }
 
-        return ResponseEntity.ok(vehicleService.authGroup(authId,groupName));
-    }    @PutMapping(AUTHVEHICLE)
+    @PutMapping(AUTHVEHICLE)
     public ResponseEntity<Boolean> authVehicle(@RequestBody @Valid Long authId, Long vehicleId) {
-
         return ResponseEntity.ok(vehicleService.authVehicle(authId,vehicleId));
-    }    @PutMapping(UNAUTHGROUP)
-    public ResponseEntity<Boolean> unAuthGroup(@RequestBody @Valid Long authId, String groupName) {
+    }
 
+    @PutMapping(UNAUTHGROUP)
+    public ResponseEntity<Boolean> unAuthGroup(@RequestBody @Valid Long authId, Long groupId) {
+        return ResponseEntity.ok(vehicleService.unAuthGroup(authId,groupId));
+    }
 
-        return ResponseEntity.ok(vehicleService.unAuthGroup(authId,groupName));
-    }    @PutMapping(UNAUTHVEHICLE)
+    @PutMapping(UNAUTHVEHICLE)
     public ResponseEntity<Boolean> unAuthVehicle(@RequestBody @Valid Long authId, Long vehicleId) {
-
-
         return ResponseEntity.ok(vehicleService.unAuthVehicle(authId, vehicleId));
     }
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<Boolean> deleteVehicle(@PathVariable Long id) {
         return ResponseEntity.ok(vehicleService.deleteVehicle(id));
     }
 }

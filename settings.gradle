@@ -2,4 +2,5 @@ rootProject.name = "microTask"
 include("auth-service")
 include 'user-service'
 include 'vehicle-service'
+include 'api-gateway'
 

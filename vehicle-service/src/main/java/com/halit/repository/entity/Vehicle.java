@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,9 +20,9 @@ public class Vehicle {
     private Long id;
     @Column(unique = true,nullable = false)
     private String plate;
-    @Column(unique = true,nullable = false)
-    private Long CompanyId;
-    private Long authorizedId;
+    private Long companyId;
+    @ElementCollection
+    private List<Long> authorizedIdList;
     @Column(unique = true)
     private String vehicleIdentificationNumber;
     private String tag;
@@ -33,7 +34,13 @@ public class Vehicle {
     private String year;
     private String region;
     private String fleet;
-    private String grup;
+    private String groupId;
 
+    public void addAuthorizedId(Long value) {
+        this.authorizedIdList.add(value);
+    }
+    public void removeAuthorizedId(Long value) {
+        this.authorizedIdList.remove(value);
+    }
 
 }

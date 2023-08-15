@@ -10,7 +10,7 @@ spring:
     username: 'postgres'
     password: 'root'
     driver-class-name: org.postgresql.Driver
-    url: 'jdbc:postgresql://localhost:5432/mobilizAuth'
+    url: 'jdbc:postgresql://localhost:5432/AuthDB'
 
   jpa:
     hibernate:

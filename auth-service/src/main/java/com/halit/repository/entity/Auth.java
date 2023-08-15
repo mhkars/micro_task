@@ -13,16 +13,21 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Builder
-@Entity(name = "vehicle")
+@Entity(name = "auth")
 public class Auth {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true,nullable = false)
     private String username;
-    private  String password;
-    private String email;
+    private String name;
+    private String surname;
+    private Long companyId;
+    private String companyName;
+    private String password;
     @Enumerated(EnumType.STRING)
     @Builder.Default
     private Roles role=Roles.Standart;
+    private String activatedCode;
+
 }
