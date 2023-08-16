@@ -22,7 +22,7 @@ public class AuthController {
 
     private final AuthService authService;
 
-    private JwtTokenManager jwtTokenManager;
+    private final JwtTokenManager jwtTokenManager;
 
     @PostMapping(REGISTER)
     public ResponseEntity<Auth> register(@RequestBody Auth dto) {

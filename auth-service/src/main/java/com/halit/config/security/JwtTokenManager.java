@@ -13,16 +13,10 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.Optional;
 
-
-
-
 @Service
 public class JwtTokenManager {
 
-    String secretKey;
-    String audience;
-    String issuer;
-
+    String secretKey = "secretkey";
     public String createToken(Long id) {
 
         String token = null;
@@ -30,8 +24,8 @@ public class JwtTokenManager {
         try {
 //        Algorithm algorithm=Algorithm.HMAC256(secretKey);
             token = JWT.create()
-                    .withAudience(audience)
-                    .withIssuer(issuer)
+                    .withAudience("mobiliz")
+                    .withIssuer("halit")
                     .withIssuedAt(new Date())
                     .withExpiresAt(new Date(System.currentTimeMillis() + (1000 * 60 * 5)))
                     .withClaim("id", id)
@@ -47,8 +41,8 @@ public class JwtTokenManager {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secretKey);
             JWTVerifier verifier = JWT.require(algorithm)
-                    .withIssuer(issuer)
-                    .withAudience(audience)
+                    .withIssuer("halit")
+                    .withAudience("mobiliz")
                     .build();
             DecodedJWT decodedJWT = verifier.verify(token);
 

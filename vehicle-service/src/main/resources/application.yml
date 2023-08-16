@@ -16,3 +16,6 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+  application:
+    name: user-service-application-dev

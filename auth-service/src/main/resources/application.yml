@@ -2,10 +2,7 @@ server:
   port: 8091
 
 spring:
-  security:
-    user:
-      name: halit
-      password: 123
+
   datasource:
     username: 'postgres'
     password: 'root'
@@ -16,3 +13,11 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+
+application:
+  name: auth-service-application
+
+myapplication:
+  feign:
+    vehicle: http://localhost:8092/api/v1
